@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.env
+venv/
+.venv/
+
+# Node
+node_modules/
+frontend/dist/
+
+# Data files (keep init_data.py, ignore generated data)
+backend/data/standards.json
+backend/data/standards.db
+backend/data/ai_config.json
+backend/data/standards\ copy.json
+
+# Embedded git repo
+aecheck-data-process/
+
+# Docker
+.docker/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,30 @@
+networks:
+  ae-net:
+services:
+  backend:
+    image: aecheck-back:local
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: ae-back
+    restart: always
+    volumes:
+      - /vol2/1000/docker/aecheck/backend/data:/app/data
+    networks: [ae-net]
+    environment:
+      TZ: Asia/Shanghai
+    command: >
+      uvicorn main:app --host 0.0.0.0 --port 8080
+
+  web:
+    image: aecheck-web:local
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: ae-web
+    restart: always
+    ports:
+      - "8017:80"
+    networks: [ae-net]
+    depends_on:
+      - backend
